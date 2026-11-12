@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A0908">
+<title>Шашлык от Вано — заказ шашлыка в Екатеринбурге | ул. Владимира Высоцкого, 45/14</title>
+<meta name="description" content="Кафе быстрого питания «Шашлык от Вано». Шашлык на берёзовых углях, плов и лагман из казана на дровах, выпечка из тандыра. Самовывоз и курьерская доставка по Екатеринбургу. Ежедневно 07:00–20:00. Предварительный заказ через WhatsApp, оплата при получении.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F2ECE0'/%3E%3Ctext x='32' y='46' font-family='Arial' font-size='36' font-weight='bold' text-anchor='middle' fill='%230A0908'%3E%D0%92%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          coal: '#0A0908',
+          card: '#11100E',
+          cream: '#F2ECE0',
+          smoke: '#9B9388',
+          line: 'rgba(242,236,224,0.14)',
+          ember: '#D8A25C',
+          'ember-soft': '#E8BC80',
+          'ember-deep': '#B27B38',
+        },
+        fontFamily: {
+          sans: ['Onest', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          display: ['Inter Tight', 'Onest', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        },
+      }
+    }
+  };
+</script>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}.modal{display:flex !important}</style></noscript>
+
+<style>
+  html { scroll-behavior: smooth; scrollbar-color: #2a2620 #0A0908; }
+  body { background-color: #0A0908; }
+  body.modal-lock { overflow: hidden; }
+
+  ::selection { background: #D8A25C; color: #0A0908; }
+
+  :focus-visible { outline: 2px solid rgba(216,162,92,.9); outline-offset: 3px; }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #0A0908; }
+  ::-webkit-scrollbar-thumb { background: #2a2620; border: 2px solid #0A0908; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #3a342d; }
+
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* Кнопка добавления в меню */
+  .btn-add {
+    display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+    padding: .62rem 1.15rem; border-radius: 999px;
+    font-family: 'Onest', sans-serif;
+    font-size: .78rem; font-weight: 600; letter-spacing: 0; text-transform: none;
+    background: transparent; color: #F2ECE0; border: 1px solid rgba(242,236,224,.16);
+    cursor: pointer; white-space: nowrap;
+    transition: background .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .btn-add:hover { background: #F2ECE0; border-color: #F2ECE0; color: #0A0908; }
+  .btn-add:active { background: #D8A25C; border-color: #D8A25C; color: #0A0908; }
+  .btn-add.is-added { background: #D8A25C; border-color: #D8A25C; color: #0A0908; }
+
+  .qty-btn {
+    display: grid; place-items: center; width: 2.25rem; height: 2.25rem; flex: none; border-radius: 999px;
+    border: 1px solid rgba(242,236,224,.16); background: transparent;
+    color: #F2ECE0; font-weight: 500; font-size: 1rem; cursor: pointer; line-height: 1;
+    transition: background .18s ease, border-color .18s ease, color .18s ease;
+  }
+  .qty-btn:hover { border-color: #F2ECE0; background: #F2ECE0; color: #0A0908; }
+
+  .field-error { border-color: #d98282 !important; }
+
+  /* Появление блоков */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); }
+  .reveal.revealed { opacity: 1; transform: none; }
+
+  /* Категории меню */
+  .menu-tab {
+    position: relative; padding: 1rem 0 1.1rem; border-radius: 0;
+    font-size: .84rem; font-weight: 500; letter-spacing: 0; text-transform: none;
+    color: #9B9388; background: none; border: 0;
+    cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; gap: .4rem;
+    transition: color .18s ease;
+  }
+  .menu-tab::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+    background: #D8A25C; transform: scaleX(0); transform-origin: left;
+    transition: transform .28s cubic-bezier(.22,1,.36,1);
+  }
+  .menu-tab:hover { color: #F2ECE0; }
+  .menu-tab.is-active { color: #F2ECE0; }
+  .menu-tab.is-active::after { transform: scaleX(1); }
+  .tab-count { font-size: .72em; color: rgba(242,236,224,.42); }
+
+  /* Фильтрация меню */
+  #menu-grid { transition: opacity .18s ease; }
+  #menu-grid.is-switching { opacity: 0; }
+  @keyframes cardIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .card-in { opacity: 0; animation: cardIn .4s cubic-bezier(.22,1,.36,1) forwards; }
+
+  /* Тост */
+  #toast {
+    position: fixed; bottom: 1.5rem; left: 50%; transform: translate(-50%, 12px);
+    width: max-content; max-width: calc(100vw - 2rem);
+    opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .3s ease; z-index: 80;
+    border-radius: 999px;
+    border: 1px solid rgba(242,236,224,.16);
+    background: rgba(17,16,14,.97);
+    box-shadow: 0 18px 50px -20px rgba(0,0,0,.9);
+    backdrop-filter: blur(14px);
+  }
+  #toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+  /* Модальные окна */
+  .modal { display: none; }
+  .modal.is-open { display: flex; }
+  .modal .modal-backdrop { opacity: 0; transition: opacity .25s ease; }
+  .modal.is-visible .modal-backdrop { opacity: 1; }
+  .modal .modal-panel { opacity: 0; transform: translateY(16px) scale(.99); transition: opacity .28s ease, transform .28s cubic-bezier(.22,1,.36,1); }
+  .modal.is-visible .modal-panel { opacity: 1; transform: none; }
+
+  /* Чекбокс согласия 152-ФЗ */
+  .consent-box {
+    -webkit-appearance: none; appearance: none;
+    width: 1.2rem; height: 1.2rem; flex: none; margin-top: .05rem; cursor: pointer; position: relative;
+    border-radius: .35rem;
+    border: 1px solid rgba(242,236,224,.28); background: #0A0908;
+    transition: background .18s ease, border-color .18s ease;
+  }
+  .consent-box:hover { border-color: rgba(242,236,224,.55); }
+  .consent-box:checked { background: #D8A25C; border-color: #D8A25C; }
+  .consent-box:checked::after {
+    content: ''; position: absolute; inset: 0;
+    background: no-repeat center / 62% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 13l4 4L19 7' fill='none' stroke='%230A0908' stroke-width='3'/%3E%3C/svg%3E");
+  }
+  .consent-box.field-error { border-color: #d98282 !important; background: rgba(217,130,130,.15); }
+
+  @keyframes bump { 0% { transform: scale(1); } 35% { transform: scale(1.06); } 100% { transform: scale(1); } }
+  .bump { animation: bump .4s ease; }
+
+  /* Выбор способа получения */
+  .delivery-box input:checked + .delivery-face { border-color: rgba(216,162,92,.75); background: rgba(216,162,92,.05); }
+  .delivery-box input:checked + .delivery-face .delivery-dot { opacity: 1; }
+  .delivery-box input:focus-visible + .delivery-face { outline: 2px solid rgba(216,162,92,.9); outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal, .card-in { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+
+<body id="top" class="bg-coal font-sans text-cream antialiased">
+
+<div id="toast" class="px-6 py-3 text-sm font-medium text-cream" role="status" aria-live="polite"></div>
+
+<!-- ============ ШАПКА ============ -->
+<header class="sticky top-0 z-40 border-b border-line bg-coal/90 backdrop-blur-xl">
+  <div class="mx-auto flex h-[72px] max-w-[1400px] items-center gap-8 px-6 sm:h-20 lg:px-10">
+
+    <a href="#top" class="flex-none" aria-label="Шашлык от Вано — на главную">
+      <span class="font-display text-[15px] font-semibold tracking-[-0.02em] text-cream sm:text-[17px]">Шашлык от Вано</span>
+    </a>
+
+    <nav class="hidden items-center gap-6 md:flex lg:gap-8" aria-label="Основная навигация">
+      <a href="#menu" class="text-[13px] font-medium text-smoke transition-colors hover:text-cream">Меню</a>
+      <a href="#info" class="text-[13px] font-medium text-smoke transition-colors hover:text-cream">Доставка</a>
+      <a href="#contacts" class="text-[13px] font-medium text-smoke transition-colors hover:text-cream">Контакты</a>
+    </nav>
+
+    <div class="ml-auto flex items-center gap-3 sm:gap-6">
+
+      <a href="tel:+79086391899" class="grid h-9 w-9 place-items-center rounded-full border border-line text-cream transition hover:border-cream/40 sm:hidden" aria-label="Позвонить">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <a href="tel:+79086391899" class="hidden text-[13px] font-medium text-cream transition-colors hover:text-ember sm:inline">+7 (908) 639-18-99</a>
+
+      <button type="button" id="cart-btn" data-open-modal="modal-cart" title="Открыть корзину" aria-label="Открыть корзину"
+              class="flex flex-none items-center gap-2.5 rounded-full border border-line px-4 py-2 text-[13px] font-medium text-cream transition-colors hover:border-cream/40 sm:px-5">
+        <span>Корзина</span>
+        <span id="cart-total-inline" class="hidden text-[12px] font-normal text-smoke lg:inline"></span>
+        <span id="cart-badge" class="hidden h-5 min-w-[1.25rem] flex items-center justify-center rounded-full bg-ember px-1.5 text-[10px] font-bold tabular-nums text-coal">0</span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ ГЛАВНЫЙ БЛОК ============ -->
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-[1400px] px-6 pb-20 pt-14 sm:pt-20 lg:px-10 lg:pb-28 lg:pt-24">
+      <div class="grid gap-14 lg:grid-cols-[1.12fr_0.88fr] lg:items-end lg:gap-20">
+
+        <div>
+          <h1 class="reveal max-w-[12ch] font-display text-[clamp(2.8rem,7vw,6.2rem)] font-semibold leading-[0.97] tracking-[-0.05em] text-cream text-balance">
+            Шашлык на берёзовых <span class="text-ember">углях</span>
+          </h1>
+
+          <p class="reveal mt-8 max-w-[35rem] text-[15px] leading-[1.75] text-smoke sm:text-base" style="transition-delay:.08s">
+            Свинина, телятина и курица на берёзовых углях. Плов и лагман — из казана на дровах,
+            выпечка — из тандыра. Забирайте у мангала или заказывайте доставку по Екатеринбургу.
+          </p>
+
+          <div class="reveal mt-10 flex flex-col gap-3 sm:flex-row sm:items-center" style="transition-delay:.14s">
+            <a href="#menu" class="group inline-flex items-center justify-center gap-2.5 rounded-full bg-ember px-7 py-4 text-sm font-semibold text-coal transition-colors hover:bg-ember-soft">
+              Смотреть меню
+              <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="https://wa.me/79086391899" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full border border-line px-7 py-4 text-sm font-medium text-cream transition-colors hover:border-cream/40">
+              Написать в WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <aside class="reveal w-full max-w-xl lg:max-w-none lg:pb-1" style="transition-delay:.12s">
+          <div class="rounded-[1.75rem] bg-cream p-7 text-coal sm:p-10 lg:p-11">
+            <div class="flex items-baseline justify-between gap-6 border-b border-coal/15 pb-5 text-[12px] text-coal/55">
+              <span>Сегодня на мангале</span>
+              <span class="tabular-nums">250 г</span>
+            </div>
+            <h2 class="mt-9 max-w-[14ch] font-display text-[2rem] font-semibold leading-[1.02] tracking-[-0.04em] sm:text-[2.5rem]">Шашлык из свиной шеи</h2>
+            <p class="mt-5 max-w-[24rem] text-sm leading-[1.7] text-coal/60">Сочное мясо на углях, маринованный лук и фирменный томатный соус.</p>
+            <div class="mt-10 flex items-center justify-between gap-4 border-t border-coal/15 pt-6 sm:gap-6">
+              <p class="whitespace-nowrap font-display text-[2rem] font-semibold tracking-[-0.04em] tabular-nums sm:text-[2.2rem]">350 <span class="text-lg font-normal">₽</span></p>
+              <a href="#menu" class="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-coal px-5 py-3 text-[13px] font-medium text-cream transition-colors hover:bg-[#1d1a16]">
+                В меню
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <dl class="reveal mt-16 grid grid-cols-2 gap-x-8 gap-y-8 border-t border-line pt-8 sm:grid-cols-4 lg:mt-20" style="transition-delay:.18s">
+        <div>
+          <dt class="text-[12px] text-smoke">Адрес</dt>
+          <dd class="mt-2 text-[14px] font-medium leading-snug text-cream">Екатеринбург,<br>Высоцкого, 45/14</dd>
+        </div>
+        <div>
+          <dt class="text-[12px] text-smoke">Часы работы</dt>
+          <dd class="mt-2 text-[14px] font-medium tabular-nums text-cream">07:00–20:00</dd>
+        </div>
+        <div>
+          <dt class="text-[12px] text-smoke">Доставка</dt>
+          <dd class="mt-2 text-[14px] font-medium text-cream">30–60 минут</dd>
+        </div>
+        <div>
+          <dt class="text-[12px] text-smoke">Оплата</dt>
+          <dd class="mt-2 text-[14px] font-medium text-cream">При получении</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ МЕНЮ ============ -->
+  <section id="menu" class="scroll-mt-24 border-b border-line">
+    <div class="mx-auto max-w-[1400px] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+
+      <div class="reveal flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-12">
+        <h2 class="font-display text-[clamp(2.3rem,4.6vw,3.6rem)] font-semibold leading-none tracking-[-0.04em] text-cream">Меню</h2>
+        <p class="max-w-sm text-sm leading-[1.7] text-smoke md:pb-1 md:text-right">
+          Мангал, казан и тандыр. Цены указаны за порцию, выход — в граммах.
+        </p>
+      </div>
+
+      <div class="reveal mt-12 border-b border-line">
+        <div class="-mx-6 overflow-x-auto px-6 sm:mx-0 sm:px-0 no-scrollbar">
+          <div id="menu-tabs" role="tablist" aria-label="Категории меню" class="flex w-max gap-8 sm:w-full sm:flex-wrap">
+            <button type="button" class="menu-tab is-active" data-cat="all" role="tab" aria-selected="true">Всё меню <span class="tab-count">10</span></button>
+            <button type="button" class="menu-tab" data-cat="shashlyk" role="tab" aria-selected="false">Шашлык <span class="tab-count">4</span></button>
+            <button type="button" class="menu-tab" data-cat="lula" role="tab" aria-selected="false">Люля-кебаб <span class="tab-count">2</span></button>
+            <button type="button" class="menu-tab" data-cat="kazan" role="tab" aria-selected="false">Блюда из казана <span class="tab-count">2</span></button>
+            <button type="button" class="menu-tab" data-cat="bakery" role="tab" aria-selected="false">Тандыр <span class="tab-count">2</span></button>
+          </div>
+        </div>
+      </div>
+
+      <p id="menu-note" class="mt-5 text-sm leading-relaxed text-smoke">Мангал, казан и тандыр работают в одном цехе у прилавка.</p>
+
+      <div id="menu-grid" class="mt-6 grid grid-cols-1 gap-x-16 md:grid-cols-2 lg:gap-x-24"></div>
+    </div>
+  </section>
+
+  <!-- ============ ДОСТАВКА И ОПЛАТА ============ -->
+  <section id="info" class="scroll-mt-24 border-b border-line">
+    <div class="mx-auto max-w-[1400px] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+      <div class="reveal max-w-2xl">
+        <h2 class="font-display text-[clamp(2.3rem,4.6vw,3.6rem)] font-semibold leading-none tracking-[-0.04em] text-cream">Доставка и оплата</h2>
+        <p class="mt-5 max-w-xl text-sm leading-[1.75] text-smoke sm:text-[15px]">
+          Собираем заказ в WhatsApp, подтверждаем его по телефону и отдаём при получении. Без предоплаты.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-10 md:grid-cols-3 md:gap-12">
+        <article class="reveal border-t border-line pt-6">
+          <h3 class="font-display text-[1.3rem] font-medium tracking-[-0.02em] text-cream">Приезжайте к мангалу</h3>
+          <p class="mt-4 text-sm leading-[1.75] text-smoke">
+            г. Екатеринбург, ул. Владимира Высоцкого, 45/14<br>
+            <span class="text-smoke/70">возле ТК КОР — производство и самовывоз</span>
+          </p>
+          <a href="https://yandex.ru/maps/?text=Екатеринбург, улица Владимира Высоцкого, 45/14" target="_blank" rel="noopener"
+             class="mt-6 inline-flex items-center gap-2 text-[13px] font-medium text-cream underline decoration-white/20 underline-offset-4 transition hover:text-ember hover:decoration-ember/50">
+            Открыть в Яндекс.Картах
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </article>
+
+        <article class="reveal border-t border-line pt-6" style="transition-delay:.08s">
+          <h3 class="font-display text-[1.3rem] font-medium tracking-[-0.02em] text-cream">Заказ в WhatsApp</h3>
+          <p class="mt-4 text-sm leading-[1.75] text-smoke">
+            Соберите корзину на сайте — список уйдёт в WhatsApp:
+            <a href="https://wa.me/79086391899" target="_blank" rel="noopener" class="font-medium text-cream underline decoration-white/20 underline-offset-4 transition hover:text-ember hover:decoration-ember/50">+7 (908) 639-18-99</a>.
+            Перед отправкой заказ подтверждается звонком.
+          </p>
+          <a href="#menu" class="mt-6 inline-flex items-center gap-2 text-[13px] font-medium text-cream underline decoration-white/20 underline-offset-4 transition hover:text-ember hover:decoration-ember/50">
+            Перейти к меню
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="reveal border-t border-line pt-6" style="transition-delay:.16s">
+          <h3 class="font-display text-[1.3rem] font-medium tracking-[-0.02em] text-cream">Оплата при получении</h3>
+          <p class="mt-4 text-sm leading-[1.75] text-smoke">
+            Наличными или картой через терминал курьера. Онлайн-списания на сайте нет —
+            расчёт и кассовый чек только при выдаче заказа.
+          </p>
+          <p class="mt-6 text-[12px] text-smoke/70">Без предоплаты</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ПРИЗЫВ К ЗАКАЗУ ============ -->
+  <section class="bg-cream text-coal">
+    <div class="mx-auto max-w-[1400px] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
+      <div class="grid gap-10 lg:grid-cols-[1.35fr_0.65fr] lg:items-end lg:gap-16">
+        <div class="reveal">
+          <h2 class="max-w-[17ch] font-display text-[clamp(2.2rem,4.5vw,3.8rem)] font-semibold leading-[1.02] tracking-[-0.045em] text-balance">
+            Соберите заказ — остальное сделаем мы
+          </h2>
+          <p class="mt-5 max-w-lg text-sm leading-[1.75] text-coal/60">
+            Выберите блюда, укажите способ получения и телефон — список уйдёт в WhatsApp кафе. Оплата при получении.
+          </p>
+        </div>
+        <div class="reveal flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-end" style="transition-delay:.08s">
+          <button type="button" data-open-modal="modal-cart"
+                  class="inline-flex items-center justify-center gap-2.5 rounded-full bg-coal px-7 py-4 text-sm font-medium text-cream transition-colors hover:bg-[#1d1a16]">
+            Открыть корзину
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <a href="https://wa.me/79086391899" target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center gap-2 rounded-full border border-coal/20 px-7 py-4 text-sm font-medium text-coal transition-colors hover:border-coal/40">
+            Написать в WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ ПОДВАЛ ============ -->
+<footer id="contacts" class="scroll-mt-24 bg-coal">
+  <div class="mx-auto max-w-[1400px] px-6 pb-10 pt-16 sm:pt-20 lg:px-10">
+    <div class="grid gap-12 md:grid-cols-[1.5fr_0.75fr_0.75fr] md:gap-12">
+      <div>
+        <a href="#top" class="inline-block">
+          <span class="font-display text-[17px] font-semibold tracking-[-0.02em] text-cream">Шашлык от Вано</span>
+        </a>
+        <p class="mt-5 max-w-sm text-sm leading-[1.75] text-smoke">Кафе быстрого питания. Адрес: г. Екатеринбург, ул. Владимира Высоцкого, 45/14.</p>
+        <p class="mt-4 max-w-md text-[11px] leading-relaxed text-smoke/50">ИП [ФИО владельца] · ОГРНИП: [Указать при регистрации] · ИНН: [Указать при регистрации]</p>
+      </div>
+
+      <div>
+        <p class="text-[13px] font-medium text-cream">Контакты</p>
+        <div class="mt-5 flex flex-col items-start gap-3 text-sm">
+          <a href="tel:+79086391899" class="text-smoke transition-colors hover:text-ember">+7 (908) 639-18-99</a>
+          <p class="text-smoke">Ежедневно 07:00–20:00</p>
+          <p class="text-smoke">Высоцкого, 45/14 · у ТК КОР</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-[13px] font-medium text-cream">Документы</p>
+        <div class="mt-5 flex flex-col items-start gap-3 text-sm">
+          <button type="button" data-open-modal="modal-policy" class="text-left text-smoke underline decoration-white/15 underline-offset-4 transition-colors hover:text-ember hover:decoration-ember/50">Политика конфиденциальности</button>
+          <button type="button" data-open-modal="modal-offer" class="text-left text-smoke underline decoration-white/15 underline-offset-4 transition-colors hover:text-ember hover:decoration-ember/50">Публичная оферта</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 flex flex-col gap-4 border-t border-line pt-6 text-[11px] leading-relaxed text-smoke/50 sm:flex-row sm:items-start sm:justify-between">
+      <p class="max-w-2xl">Сайт носит исключительно информационный характер и не является интернет-магазином со списанием средств. Окончательный расчёт и выдача чека производятся при получении заказа.</p>
+      <p class="shrink-0">© <span id="year"></span> «Шашлык от Вано»</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ МОДАЛЬНОЕ ОКНО: КОРЗИНА ============ -->
+<div id="modal-cart" class="modal fixed inset-0 z-50 items-center justify-center p-3 sm:p-6" aria-hidden="true">
+  <div class="modal-backdrop absolute inset-0 bg-black/75" data-close-modal role="presentation"></div>
+
+  <div class="modal-panel relative z-10 flex max-h-[90dvh] w-full max-w-xl flex-col overflow-hidden rounded-2xl border border-line bg-card shadow-[0_40px_120px_-40px_rgba(0,0,0,.9)] sm:rounded-3xl" role="dialog" aria-modal="true" aria-label="Оформление заказа">
+    <div class="flex items-center justify-between gap-4 border-b border-line px-6 py-5 sm:px-7">
+      <h3 class="font-display text-lg font-semibold tracking-[-0.02em] text-cream">Оформление заказа</h3>
+      <button type="button" data-close-modal class="grid h-9 w-9 flex-none place-items-center rounded-full border border-line text-smoke transition-colors hover:border-cream/40 hover:text-cream" title="Закрыть" aria-label="Закрыть">✕</button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto">
+      <!-- Пустая корзина -->
+      <div id="cart-empty" class="hidden px-6 py-16 text-center sm:py-20">
+        <p class="font-display text-2xl font-semibold tracking-[-0.03em] text-cream">Корзина пуста</p>
+        <p class="mt-3 text-sm leading-relaxed text-smoke">Добавьте шашлык, люля или плов — соберём заказ.</p>
+        <div class="mt-8 flex justify-center">
+          <button id="empty-menu-btn" type="button" data-close-modal class="rounded-full bg-ember px-6 py-3 text-sm font-semibold text-coal transition-colors hover:bg-ember-soft">Перейти к меню</button>
+        </div>
+      </div>
+
+      <!-- Корзина с блюдами + форма -->
+      <div id="cart-full" class="hidden">
+        <div id="cart-items" class="divide-y divide-line px-6 sm:px-7"></div>
+
+        <div class="mx-6 flex items-center justify-between border-y border-line py-4 sm:mx-7">
+          <span class="text-[13px] text-smoke">Итого</span>
+          <span id="cart-total" class="font-display text-2xl font-semibold tabular-nums tracking-[-0.03em] text-ember">0 ₽</span>
+        </div>
+
+        <form id="order-form" class="space-y-5 p-6 sm:p-7" novalidate>
+          <div>
+            <label for="field-name" class="mb-2 block text-[12px] font-medium text-smoke">Имя</label>
+            <input id="field-name" type="text" autocomplete="name" maxlength="60" placeholder="Как к вам обращаться?"
+                   class="w-full rounded-xl border border-line bg-coal px-4 py-3.5 text-sm text-cream outline-none transition placeholder:text-smoke/50 focus:border-ember focus:ring-2 focus:ring-ember/15">
+            <p id="err-name" class="mt-2 hidden text-xs font-medium text-red-400"></p>
+          </div>
+
+          <div>
+            <label for="field-phone" class="mb-2 block text-[12px] font-medium text-smoke">Телефон</label>
+            <input id="field-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__"
+                   class="w-full rounded-xl border border-line bg-coal px-4 py-3.5 text-sm text-cream outline-none transition placeholder:text-smoke/50 focus:border-ember focus:ring-2 focus:ring-ember/15">
+            <p id="err-phone" class="mt-2 hidden text-xs font-medium text-red-400"></p>
+          </div>
+
+          <div>
+            <span class="mb-2 block text-[12px] font-medium text-smoke">Способ получения</span>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="delivery-box cursor-pointer">
+                <input id="delivery-courier" type="radio" name="delivery" value="courier" class="peer sr-only" checked>
+                <span class="delivery-face flex flex-col gap-1.5 rounded-xl border border-line bg-coal px-4 py-3.5 transition peer-checked:border-ember peer-checked:bg-ember/[0.05] peer-checked:text-cream">
+                  <span class="flex items-center gap-2 text-sm font-medium">Доставка
+                    <span class="delivery-dot ml-auto h-1.5 w-1.5 rounded-full bg-ember opacity-0 transition-opacity"></span>
+                  </span>
+                  <span class="text-[11px] text-smoke/70">30–60 минут</span>
+                </span>
+              </label>
+              <label class="delivery-box cursor-pointer">
+                <input id="delivery-pickup" type="radio" name="delivery" value="pickup" class="peer sr-only">
+                <span class="delivery-face flex flex-col gap-1.5 rounded-xl border border-line bg-coal px-4 py-3.5 transition peer-checked:border-ember peer-checked:bg-ember/[0.05] peer-checked:text-cream">
+                  <span class="flex items-center gap-2 text-sm font-medium">Самовывоз
+                    <span class="delivery-dot ml-auto h-1.5 w-1.5 rounded-full bg-ember opacity-0 transition-opacity"></span>
+                  </span>
+                  <span class="text-[11px] text-smoke/70">с 07:00 до 20:00</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div id="address-wrap" class="transition-opacity duration-200">
+            <label for="field-address" id="address-label" class="mb-2 block text-[12px] font-medium text-smoke">Точный адрес доставки</label>
+            <input id="field-address" type="text" autocomplete="street-address" maxlength="200" placeholder="Улица, дом, квартира, ориентир"
+                   class="w-full rounded-xl border border-line bg-coal px-4 py-3.5 text-sm text-cream outline-none transition placeholder:text-smoke/50 focus:border-ember focus:ring-2 focus:ring-ember/15">
+            <p id="err-address" class="mt-2 hidden text-xs font-medium text-red-400"></p>
+            <p id="pickup-hint" class="mt-2 hidden rounded-lg border border-line px-4 py-3 text-xs leading-relaxed text-smoke">Заберёте сами: г. Екатеринбург, ул. Владимира Высоцкого, 45/14 (возле ТК КОР)</p>
+          </div>
+
+          <div>
+            <label class="flex cursor-pointer items-start gap-3">
+              <input id="consent" type="checkbox" class="consent-box">
+              <span class="text-xs leading-relaxed text-smoke">
+                Нажимая кнопку «Оформить заказ», я даю согласие на обработку персональных данных в соответствии с
+                <button type="button" data-open-modal="modal-policy" class="text-ember underline decoration-ember/40 underline-offset-2 transition-colors hover:text-ember-soft">Политикой конфиденциальности</button>
+                и принимаю условия
+                <button type="button" data-open-modal="modal-offer" class="text-ember underline decoration-ember/40 underline-offset-2 transition-colors hover:text-ember-soft">Публичной оферты</button>.
+              </span>
+            </label>
+            <p id="err-consent" class="mt-2 hidden text-xs font-medium text-red-400"></p>
+          </div>
+
+          <button type="submit"
+                  class="flex w-full items-center justify-center rounded-full bg-ember px-5 py-4 text-sm font-semibold text-coal transition-colors hover:bg-ember-soft active:bg-ember-deep">
+            Оформить заказ в WhatsApp
+          </button>
+          <p class="text-center text-[11px] leading-relaxed text-smoke/60">Откроется чат WhatsApp с готовым заказом — останется нажать «Отправить». Оплата при получении.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ МОДАЛЬНОЕ ОКНО: ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ ============ -->
+<div id="modal-policy" class="modal fixed inset-0 z-50 items-center justify-center p-4" aria-hidden="true">
+  <div class="modal-backdrop absolute inset-0 bg-black/75" data-close-modal role="presentation"></div>
+  <div class="modal-panel relative z-10 flex max-h-[90dvh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-line bg-card shadow-[0_40px_120px_-40px_rgba(0,0,0,.9)] sm:rounded-3xl" role="dialog" aria-modal="true" aria-label="Политика конфиденциальности">
+    <div class="flex items-center justify-between gap-4 border-b border-line px-6 py-5 sm:px-7">
+      <h3 class="font-display text-lg font-semibold tracking-[-0.02em] text-cream">Политика конфиденциальности</h3>
+      <button type="button" data-close-modal class="grid h-9 w-9 flex-none place-items-center rounded-full border border-line text-smoke transition-colors hover:border-cream/40 hover:text-cream" title="Закрыть" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="flex-1 space-y-5 overflow-y-auto p-6 text-sm leading-[1.8] text-smoke sm:p-7">
+      <p>Настоящая Политика конфиденциальности (далее — Политика) определяет порядок обработки и защиты персональных данных пользователей сайта кафе быстрого питания «Шашлык от Вано» (далее — Сайт). Политика разработана в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+      <p><strong class="text-cream">1. Оператор персональных данных.</strong> Оператором является кафе быстрого питания «Шашлык от Вано»: ИП [ФИО владельца], ОГРНИП: [Указать при регистрации], ИНН: [Указать при регистрации], адрес производства и самовывоза: г. Екатеринбург, ул. Владимира Высоцкого, 45/14.</p>
+      <p><strong class="text-cream">2. Состав обрабатываемых данных.</strong> При оформлении предварительного заказа пользователь добровольно предоставляет: имя пользователя; номер телефона; адрес доставки (только при выборе курьерской доставки). Иные персональные данные Оператор не запрашивает и не обрабатывает. Данные, автоматически передаваемые при посещении страниц Сайта (IP-адрес, данные cookies), используются исключительно для корректной работы Сайта.</p>
+      <p><strong class="text-cream">3. Цели обработки.</strong> Обработка персональных данных осуществляется исключительно в целях: оформления и исполнения предварительного заказа пользователя (сборка и выдача заказа, курьерская доставка); обратной связи с пользователем по заказу, в том числе подтверждения заказа по телефону.</p>
+      <p><strong class="text-cream">4. Порядок обработки.</strong> Обработка осуществляется с использованием средств автоматизации и без использования таковых. Доступ к персональным данным имеют только сотрудники Оператора, участвующие в оформлении и выдаче заказов, в объёме, необходимом для исполнения заказа. Согласие на обработку подтверждается действием пользователя при проставлении отметки в форме заказа.</p>
+      <p><strong class="text-cream">5. Передача третьим лицам.</strong> Персональные данные не передаются третьим лицам, не продаются и не публикуются. Передача данных осуществлялась бы только в случаях, прямо предусмотренных законодательством РФ.</p>
+      <p><strong class="text-cream">6. Хранение и уничтожение.</strong> Персональные данные хранятся не дольше, чем этого требуют цели обработки, после чего уничтожаются или обезличиваются. Заявленный срок хранения — до момента исполнения заказа, если иное не установлено требованиями законодательства РФ.</p>
+      <p><strong class="text-cream">7. Права пользователя.</strong> Пользователь вправе получить сведения об обработке своих персональных данных, требовать их уточнения, блокирования или уничтожения, а также отозвать согласие на обработку в любой момент, направив обращение по телефону +7 (908) 639-18-99 или обратившись по адресу производства.</p>
+      <p><strong class="text-cream">8. Изменение Политики.</strong> Оператор вправе изменять Политику. Новая редакция вступает в силу с момента её размещения на Сайте.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ МОДАЛЬНОЕ ОКНО: ПУБЛИЧНАЯ ОФЕРТА ============ -->
+<div id="modal-offer" class="modal fixed inset-0 z-50 items-center justify-center p-4" aria-hidden="true">
+  <div class="modal-backdrop absolute inset-0 bg-black/75" data-close-modal role="presentation"></div>
+  <div class="modal-panel relative z-10 flex max-h-[90dvh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-line bg-card shadow-[0_40px_120px_-40px_rgba(0,0,0,.9)] sm:rounded-3xl" role="dialog" aria-modal="true" aria-label="Публичная оферта">
+    <div class="flex items-center justify-between gap-4 border-b border-line px-6 py-5 sm:px-7">
+      <h3 class="font-display text-lg font-semibold tracking-[-0.02em] text-cream">Публичная оферта</h3>
+      <button type="button" data-close-modal class="grid h-9 w-9 flex-none place-items-center rounded-full border border-line text-smoke transition-colors hover:border-cream/40 hover:text-cream" title="Закрыть" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="flex-1 space-y-5 overflow-y-auto p-6 text-sm leading-[1.8] text-smoke sm:p-7">
+      <p>Настоящий документ (далее — Оферта) определяет условия дистанционного приёма предварительных заказов блюд кафе быстрого питания «Шашлык от Вано». Акцептом Оферты является оформление предварительного заказа через Сайт.</p>
+      <p><strong class="text-cream">1. Термины.</strong> Сайт — информационная страница кафе с каталогом блюд и формой заказа. Заказ — предварительно собранный пользователем список блюд с указанием контактов и способа получения. Исполнитель — кафе быстрого питания «Шашлык от Вано»: ИП [ФИО владельца], ОГРНИП: [Указать при регистрации], ИНН: [Указать при регистрации], г. Екатеринбург, ул. Владимира Высоцкого, 45/14.</p>
+      <p><strong class="text-cream">2. Характер Сайта.</strong> Сайт носит исключительно информационный характер и не является интернет-магазином. Оформление заказа на Сайте не предусматривает списания денежных средств и онлайн-оплаты. Цены на Сайте носят информационный характер за порцию и подтверждаются Исполнителем при подтверждении заказа.</p>
+      <p><strong class="text-cream">3. Порядок оформления.</strong> Пользователь заполняет форму заказа (имя, номер телефона, способ получения: курьерская доставка или самовывоз, адрес при доставке) и направляет сформированный список в мессенджер WhatsApp Исполнителя. Заказ считается принятым только после его подтверждения сотрудником Исполнителя по указанному пользователем номеру телефона в рабочее время — ежедневно с 07:00 до 20:00.</p>
+      <p><strong class="text-cream">4. Оплата.</strong> Оплата производится при получении заказа: наличными или банковской картой через платёжный терминал курьера (при доставке) либо в кассе кафе (при самовывозе). Расчёты с применением контрольно-кассовой техники осуществляются с выдачей кассового чека в соответствии с Федеральным законом от 22.05.2003 № 54-ФЗ.</p>
+      <p><strong class="text-cream">5. Состав и выход блюд.</strong> Выход каждой позиции указан в граммах в каталоге меню и включается в перечень заказа, передаваемый Исполнителю. Состав блюд — мясо, специи, гарниры и соусы — приведён в описаниях позиций каталога.</p>
+      <p><strong class="text-cream">6. Доставка.</strong> Доставка осуществляется по г. Екатеринбургу силами Исполнителя. Ориентировочный срок доставки — от 30 до 60 минут с момента подтверждения заказа; точное время может корректироваться с учётом пиковой загрузки производства. Возможность и условия доставки по конкретному адресу уточняются при подтверждении заказа по телефону.</p>
+      <p><strong class="text-cream">7. Самовывоз.</strong> Получение заказа возможно по адресу производства: г. Екатеринбург, ул. Владимира Высоцкого, 45/14 (возле ТК КОР), ежедневно с 07:00 до 20:00, после подтверждения заказа звонком.</p>
+      <p><strong class="text-cream">8. Качество и претензии.</strong> При обнаружении в момент получения недостатков заказа (некомплект, несоответствие составу, нарушение качества) пользователь вправе отказаться от получения, потребовать замены позиции или корректировки суммы расчёта. Претензии принимаются по телефону +7 (908) 639-18-99 в соответствии с законодательством РФ о защите прав потребителей.</p>
+      <p><strong class="text-cream">9. Реквизиты Исполнителя.</strong> ИП [ФИО владельца], ОГРНИП: [Указать при регистрации], ИНН: [Указать при регистрации], адрес: г. Екатеринбург, ул. Владимира Высоцкого, 45/14. Телефон для заказов: +7 (908) 639-18-99.</p>
+      <p><strong class="text-cream">10. Изменение условий.</strong> Исполнитель вправе изменять условия настоящей Оферты. Новая редакция вступает в силу с момента её размещения на Сайте.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* APP-JS-START */
+(function () {
+  'use strict';
+
+  var WHATSAPP_PHONE = '79991112233';
+  var CART_KEY = 'shashlik-vano-cart-v2';
+
+  var MENU = [
+    { id: 1, cat: 'shashlyk', name: 'Шашлык из свиной шеи', weight: '250 г', price: 350, desc: 'Сочное мясо на углях, маринованный лук, фирменный томатный соус' },
+    { id: 2, cat: 'shashlyk', name: 'Шашлык из телятины', weight: '220 г', price: 400, desc: 'Отборная телятина Халяль, традиционные кавказские пряности' },
+    { id: 3, cat: 'shashlyk', name: 'Шашлык из куриного филе', weight: '250 г', price: 280, desc: 'Филе птицы в чесночно-сметанном маринаде на березовых углях' },
+    { id: 4, cat: 'shashlyk', name: 'Свиные ребрышки на гриле', weight: '300 г', price: 320, desc: 'Мясные ребра с хрустящей корочкой и специями' },
+    { id: 5, cat: 'lula', name: 'Люля-кебаб из телятины', weight: '200 г', price: 300, desc: 'Рубленое мясо со свежей кинзой, репчатым луком и специями' },
+    { id: 6, cat: 'lula', name: 'Люля-кебаб из курицы', weight: '200 г', price: 250, desc: 'Легкий сочный кебаб из диетического куриного филе' },
+    { id: 7, cat: 'kazan', name: 'Плов узбекский из казана', weight: '350 г', price: 250, desc: 'Настоящий плов на дровах с говядиной, барбарисом и нутом' },
+    { id: 8, cat: 'kazan', name: 'Лагман домашний', weight: '400 г', price: 230, desc: 'Густой наваристый суп с тянутой вручную лапшой и говядиной' },
+    { id: 9, cat: 'bakery', name: 'Самса с говядиной', weight: '150 г', price: 100, desc: 'Слоеная выпечка из тандыра с рубленым мясом и луком' },
+    { id: 10, cat: 'bakery', name: 'Лаваш тандырный', weight: '200 г', price: 50, desc: 'Свежеиспеченный пышный кавказский хлеб' }
+  ];
+
+  var CATEGORY_NOTES = {
+    all: 'Мангал, казан и тандыр работают в одном цехе у прилавка.',
+    shashlyk: 'Подача: маринованный лук и фирменный соус.',
+    lula: 'Мясо рубится ножом, а не прокручивается — так держит сок.',
+    kazan: 'Из казана на дровах, без газовых плит.',
+    bakery: 'Из тандыра — порциями в течение всего дня.'
+  };
+
+  var cart = loadCart();
+  var activeCategory = 'all';
+
+  var menuGrid = document.getElementById('menu-grid');
+  var menuTabsBox = document.getElementById('menu-tabs');
+  var menuNote = document.getElementById('menu-note');
+  var cartBtn = document.getElementById('cart-btn');
+  var cartBadge = document.getElementById('cart-badge');
+  var cartInlineTotal = document.getElementById('cart-total-inline');
+  var cartItemsBox = document.getElementById('cart-items');
+  var cartEmptyBox = document.getElementById('cart-empty');
+  var cartFullBox = document.getElementById('cart-full');
+  var cartTotalEl = document.getElementById('cart-total');
+  var form = document.getElementById('order-form');
+  var nameInput = document.getElementById('field-name');
+  var phoneInput = document.getElementById('field-phone');
+  var addressInput = document.getElementById('field-address');
+  var addressLabel = document.getElementById('address-label');
+  var pickupHint = document.getElementById('pickup-hint');
+  var consentInput = document.getElementById('consent');
+  var toast = document.getElementById('toast');
+  var courierRadio = document.getElementById('delivery-courier');
+  var pickupRadio = document.getElementById('delivery-pickup');
+
+  var toastTimer = null;
+  var menuSwitchTimer = null;
+
+  /* ---------- Хранилище корзины ---------- */
+  function loadCart() {
+    try {
+      var raw = JSON.parse(localStorage.getItem(CART_KEY));
+      return raw && typeof raw === 'object' ? raw : {};
+    } catch (e) { return {}; }
+  }
+  function saveCart() {
+    try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (e) { /* приватный режим */ }
+  }
+
+  /* ---------- Форматирование ---------- */
+  function fmt(n) {
+    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
+
+  /* ---------- Данные корзины ---------- */
+  function productById(id) {
+    id = String(id);
+    for (var i = 0; i < MENU.length; i++) {
+      if (String(MENU[i].id) === id) return MENU[i];
+    }
+    return null;
+  }
+  function cartEntries() {
+    return MENU.filter(function (p) { return cart[p.id] > 0; })
+      .map(function (p) {
+        return { id: p.id, name: p.name, price: p.price, weight: p.weight, qty: cart[p.id] };
+      });
+  }
+  function cartCount() {
+    var sum = 0;
+    for (var id in cart) { if (cart[id] > 0) sum += cart[id]; }
+    return sum;
+  }
+  function cartTotal() {
+    return cartEntries().reduce(function (sum, p) { return sum + p.price * p.qty; }, 0);
+  }
+
+  /* ---------- Тост ---------- */
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('is-visible'); }, 2600);
+  }
+  function bumpCartButton() {
+    cartBtn.classList.remove('bump');
+    void cartBtn.offsetWidth;
+    cartBtn.classList.add('bump');
+  }
+
+  /* ---------- Отрисовка меню ---------- */
+  function renderMenu() {
+    var items = activeCategory === 'all'
+      ? MENU
+      : MENU.filter(function (p) { return p.cat === activeCategory; });
+    menuGrid.innerHTML = items.map(function (p, i) {
+      return (
+        '<article class="menu-card card-in group border-t border-line py-7" style="animation-delay:' + (i * 40) + 'ms">' +
+          '<div class="flex items-baseline justify-between gap-6">' +
+            '<h3 class="font-display text-[1.15rem] font-medium leading-snug tracking-[-0.015em] text-cream sm:text-[1.25rem]">' + p.name + '</h3>' +
+            '<p class="flex-none whitespace-nowrap font-display text-[1.15rem] font-medium tabular-nums tracking-[-0.02em] text-cream sm:text-[1.25rem]">' + fmt(p.price) + ' <span class="text-[0.7em] font-normal text-smoke">₽</span></p>' +
+          '</div>' +
+          '<p class="mt-3 max-w-[34rem] text-sm leading-[1.7] text-smoke">' + p.desc + '</p>' +
+          '<div class="mt-6 flex items-center justify-between gap-4">' +
+            '<p class="flex items-center gap-2 text-[12px] text-smoke">' +
+              '<span>' + p.weight + '</span>' +
+              '<span id="badge-' + p.id + '" class="hidden text-ember"></span>' +
+            '</p>' +
+            '<button type="button" data-add="' + p.id + '" class="btn-add">Добавить</button>' +
+          '</div>' +
+        '</article>'
+      );
+    }).join('');
+  }
+
+  function updateMenuBadges() {
+    MENU.forEach(function (p) {
+      var badge = document.getElementById('badge-' + p.id);
+      if (!badge) return;
+      var qty = cart[p.id] || 0;
+      if (qty > 0) {
+        badge.textContent = '× ' + qty;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    });
+  }
+
+  /* ---------- Категории меню ---------- */
+  function setActiveCategory(cat) {
+    activeCategory = cat;
+    menuTabsBox.querySelectorAll('.menu-tab').forEach(function (btn) {
+      var isActive = btn.getAttribute('data-cat') === cat;
+      btn.classList.toggle('is-active', isActive);
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    menuNote.textContent = CATEGORY_NOTES[cat] || '';
+    menuGrid.classList.add('is-switching');
+    clearTimeout(menuSwitchTimer);
+    menuSwitchTimer = setTimeout(function () {
+      renderMenu();
+      updateMenuBadges();
+      void menuGrid.offsetWidth;
+      menuGrid.classList.remove('is-switching');
+    }, 180);
+  }
+
+  menuTabsBox.addEventListener('click', function (e) {
+    var btn = e.target instanceof Element ? e.target.closest('.menu-tab') : null;
+    if (!btn) return;
+    var cat = btn.getAttribute('data-cat');
+    if (cat === activeCategory) return;
+    setActiveCategory(cat);
+  });
+
+  /* ---------- Отрисовка корзины ---------- */
+  function rowHtml(p) {
+    return (
+      '<div class="flex flex-wrap items-center gap-x-3 gap-y-3 py-4 sm:flex-nowrap">' +
+        '<div class="w-full min-w-0 sm:w-auto sm:flex-1 sm:pr-2">' +
+          '<p class="text-sm font-medium leading-snug text-cream sm:text-[15px]">' + p.name + '</p>' +
+          '<p class="mt-1 text-[11px] text-smoke/70">' + p.weight + ' · ' + fmt(p.price) + ' ₽ за порцию</p>' +
+        '</div>' +
+        '<div class="flex items-center gap-2">' +
+          '<button type="button" class="qty-btn" data-qty="' + p.id + '" data-delta="-1" title="Убрать одну порцию" aria-label="Убрать одну порцию">−</button>' +
+          '<span class="w-6 text-center text-sm font-medium tabular-nums text-cream">' + p.qty + '</span>' +
+          '<button type="button" class="qty-btn" data-qty="' + p.id + '" data-delta="1" title="Добавить порцию" aria-label="Добавить порцию">+</button>' +
+        '</div>' +
+        '<span class="ml-auto w-20 text-right font-display text-[15px] font-semibold tabular-nums text-cream sm:ml-0">' + fmt(p.price * p.qty) + ' ₽</span>' +
+        '<button type="button" class="ml-1 grid h-8 w-8 place-items-center rounded-full text-smoke/60 transition-colors hover:bg-white/5 hover:text-cream" data-remove="' + p.id + '" title="Убрать блюдо" aria-label="Убрать блюдо">✕</button>' +
+      '</div>'
+    );
+  }
+
+  function updateCartUI() {
+    var items = cartEntries();
+    var count = cartCount();
+    var total = cartTotal();
+
+    /* Счетчик в шапке */
+    if (count > 0) {
+      cartBadge.textContent = String(count);
+      cartBadge.classList.remove('hidden');
+    } else {
+      cartBadge.classList.add('hidden');
+    }
+    cartInlineTotal.textContent = count > 0 ? '· ' + fmt(total) + ' ₽' : '';
+
+    /* Содержимое модального окна */
+    if (items.length === 0) {
+      cartEmptyBox.classList.remove('hidden');
+      cartFullBox.classList.add('hidden');
+      cartItemsBox.innerHTML = '';
+      cartTotalEl.textContent = '0 ₽';
+    } else {
+      cartEmptyBox.classList.add('hidden');
+      cartFullBox.classList.remove('hidden');
+      cartItemsBox.innerHTML = items.map(rowHtml).join('');
+      cartTotalEl.textContent = fmt(total) + ' ₽';
+    }
+  }
+
+  function refreshAll() {
+    updateCartUI();
+    updateMenuBadges();
+  }
+
+  /* ---------- Операции с корзиной ---------- */
+  function addToCart(id) {
+    cart[id] = (cart[id] || 0) + 1;
+    saveCart();
+    refreshAll();
+    bumpCartButton();
+    showToast('Добавлено в корзину');
+  }
+  function changeQty(id, delta) {
+    var next = (cart[id] || 0) + delta;
+    if (next <= 0) delete cart[id];
+    else cart[id] = next;
+    saveCart();
+    refreshAll();
+  }
+  function removeFromCart(id) {
+    delete cart[id];
+    saveCart();
+    refreshAll();
+    showToast('Блюдо убрано из корзины');
+  }
+  function flashButton(btn) {
+    if (btn.dataset.busy) return;
+    btn.dataset.busy = '1';
+    var original = btn.textContent;
+    btn.textContent = 'В корзине';
+    btn.classList.add('is-added');
+    setTimeout(function () {
+      btn.textContent = original;
+      btn.classList.remove('is-added');
+      delete btn.dataset.busy;
+    }, 1100);
+  }
+
+  /* ---------- Модальные окна (общая система) ---------- */
+  function updateLock() {
+    document.body.classList.toggle('modal-lock', !!document.querySelector('.modal.is-open'));
+  }
+  function openModal(id) {
+    var modal = document.getElementById(id);
+    if (!modal) return;
+    clearTimeout(modal._closeTimer);
+    updateCartUI();
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    void modal.offsetWidth;
+    modal.classList.add('is-visible');
+    updateLock();
+  }
+  function closeModal(modal) {
+    if (!modal || !modal.classList.contains('is-open')) return;
+    modal.classList.remove('is-visible');
+    modal.setAttribute('aria-hidden', 'true');
+    modal._closeTimer = setTimeout(function () {
+      modal.classList.remove('is-open');
+      updateLock();
+    }, 250);
+  }
+  function closeAllModals() {
+    document.querySelectorAll('.modal.is-open').forEach(closeModal);
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAllModals();
+  });
+
+  /* ---------- Глобальные обработчики кликов ---------- */
+  document.addEventListener('click', function (e) {
+    var el = e.target instanceof Element ? e.target : null;
+    if (!el) return;
+
+    /* Открыть модальное окно (в т.ч. ссылки внутри чекбокса — через preventDefault, чтобы не сбросить галочку) */
+    var opener = el.closest('[data-open-modal]');
+    if (opener) {
+      e.preventDefault();
+      openModal(opener.getAttribute('data-open-modal'));
+      return;
+    }
+    var closer = el.closest('[data-close-modal]');
+    if (closer) {
+      e.preventDefault();
+      closeModal(closer.closest('.modal'));
+      return;
+    }
+    var addBtn = el.closest('[data-add]');
+    if (addBtn) {
+      addToCart(addBtn.getAttribute('data-add'));
+      flashButton(addBtn);
+      return;
+    }
+    var qtyBtn = el.closest('[data-qty]');
+    if (qtyBtn) {
+      changeQty(qtyBtn.getAttribute('data-qty'), Number(qtyBtn.getAttribute('data-delta')));
+      return;
+    }
+    var removeBtn = el.closest('[data-remove]');
+    if (removeBtn) {
+      removeFromCart(removeBtn.getAttribute('data-remove'));
+      return;
+    }
+  });
+
+  document.getElementById('empty-menu-btn').addEventListener('click', function () {
+    setTimeout(function () {
+      document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+    }, 180);
+  });
+
+  /* ---------- Переключатель: доставка / самовывоз ---------- */
+  function syncDelivery() {
+    var pickup = pickupRadio.checked;
+    addressInput.disabled = pickup;
+    addressLabel.textContent = pickup ? 'Адрес' : 'Точный адрес доставки';
+    addressInput.placeholder = pickup
+      ? 'Прием: г. Екатеринбург, ул. Владимира Высоцкого, 45/14'
+      : 'Улица, дом, квартира, ориентир';
+    pickupHint.classList.toggle('hidden', !pickup);
+    addressInput.classList.toggle('opacity-50', pickup);
+    if (pickup) clearError(addressInput, 'err-address');
+  }
+  [courierRadio, pickupRadio].forEach(function (radio) {
+    radio.addEventListener('change', syncDelivery);
+  });
+
+  /* ---------- Маска телефона ---------- */
+  function formatPhone(value) {
+    var d = value.replace(/\D/g, '');
+    if (d.charAt(0) === '8') d = '7' + d.slice(1);
+    if (d && d.charAt(0) !== '7') d = '7' + d;
+    d = d.slice(0, 11);
+    var out = '';
+    if (d.length > 0) out = '+7';
+    if (d.length > 1) out += ' (' + d.slice(1, 4);
+    if (d.length >= 4) out += ')';
+    if (d.length > 4) out += ' ' + d.slice(4, 7);
+    if (d.length > 7) out += '-' + d.slice(7, 9);
+    if (d.length > 9) out += '-' + d.slice(9, 11);
+    return out;
+  }
+  phoneInput.addEventListener('input', function () {
+    phoneInput.value = formatPhone(phoneInput.value);
+    clearError(phoneInput, 'err-phone');
+  });
+
+  /* ---------- Ошибки валидации ---------- */
+  function setError(input, errId, message) {
+    input.classList.add('field-error');
+    var p = document.getElementById(errId);
+    p.textContent = message;
+    p.classList.remove('hidden');
+  }
+  function clearError(input, errId) {
+    input.classList.remove('field-error');
+    var p = document.getElementById(errId);
+    p.textContent = '';
+    p.classList.add('hidden');
+  }
+  nameInput.addEventListener('input', function () { clearError(nameInput, 'err-name'); });
+  addressInput.addEventListener('input', function () { clearError(addressInput, 'err-address'); });
+  consentInput.addEventListener('change', function () { clearError(consentInput, 'err-consent'); });
+  courierRadio.addEventListener('change', function () { clearError(addressInput, 'err-address'); });
+
+  function validateForm() {
+    clearError(nameInput, 'err-name');
+    clearError(phoneInput, 'err-phone');
+    clearError(addressInput, 'err-address');
+    clearError(consentInput, 'err-consent');
+
+    var ok = true;
+    var name = nameInput.value.trim();
+    var phoneDigits = phoneInput.value.replace(/\D/g, '');
+    var courier = courierRadio.checked;
+
+    if (name.length < 2) {
+      setError(nameInput, 'err-name', 'Укажите имя — минимум 2 символа.');
+      ok = false;
+    }
+    if (phoneDigits.length !== 11 || phoneDigits.charAt(0) !== '7') {
+      setError(phoneInput, 'err-phone', 'Введите телефон в формате +7 (___) ___-__-__.');
+      ok = false;
+    }
+    if (courier && addressInput.value.trim().length < 5) {
+      setError(addressInput, 'err-address', 'Укажите адрес доставки: улица, дом, квартира.');
+      ok = false;
+    }
+    if (!consentInput.checked) {
+      setError(consentInput, 'err-consent', 'Для оформления заказа требуется согласие на обработку персональных данных.');
+      ok = false;
+    }
+    if (!ok) {
+      showToast('Проверьте выделенные поля');
+      return null;
+    }
+    return {
+      name: name,
+      phone: phoneInput.value.trim(),
+      delivery: courier ? 'courier' : 'pickup',
+      address: addressInput.value.trim()
+    };
+  }
+
+  /* ---------- Сборка и отправка заказа в WhatsApp ---------- */
+  function buildOrderMessage(data) {
+    var lines = [];
+    lines.push('*НОВЫЙ ЗАКАЗ* — Шашлык от Вано');
+    lines.push('━━━━━━━━━━━━━━━━━━');
+    lines.push('*Имя:* ' + data.name);
+    lines.push('*Телефон:* ' + data.phone);
+    lines.push('*Получение:* ' + (data.delivery === 'courier' ? 'Курьерская доставка' : 'Самовывоз'));
+    lines.push('*Адрес:* ' + (data.delivery === 'courier' ? data.address : 'г. Екатеринбург, ул. Владимира Высоцкого, 45/14'));
+    lines.push('━━━━━━━━━━━━━━━━━━');
+    lines.push('*Состав заказа*');
+    cartEntries().forEach(function (p, index) {
+      lines.push(String(index + 1) + '. ' + p.name + ' (' + p.weight + ') × ' + p.qty + ' = ' + fmt(p.price * p.qty) + ' руб.');
+    });
+    lines.push('━━━━━━━━━━━━━━━━━━');
+    lines.push('*ИТОГО:* ' + fmt(cartTotal()) + ' руб.');
+    lines.push('Оплата при получении: наличные / карта.');
+    return lines.join('\n');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (cartCount() === 0) {
+      showToast('Корзина пуста — добавьте блюда из меню');
+      return;
+    }
+
+    var data = validateForm();
+    if (!data) return;
+
+    var message = buildOrderMessage(data);
+    var url = 'https://wa.me/' + WHATSAPP_PHONE + '?text=' + encodeURIComponent(message);
+
+    var popup = window.open(url, '_blank', 'noopener');
+    if (!popup) window.location.href = url;
+
+    cart = {};
+    saveCart();
+    refreshAll();
+    closeAllModals();
+    form.reset();
+    syncDelivery();
+    showToast('Заказ сформирован — завершите отправку в WhatsApp');
+  });
+
+  /* ---------- Появление блоков ---------- */
+  function initReveal() {
+    var targets = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach(function (el) { el.classList.add('revealed'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    targets.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Инициализация ---------- */
+  document.getElementById('year').textContent = String(new Date().getFullYear());
+  renderMenu();
+  refreshAll();
+  syncDelivery();
+  initReveal();
+})();
+/* APP-JS-END */
+</script>
+</body>
+</html>
